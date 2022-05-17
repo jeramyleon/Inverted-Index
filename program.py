@@ -1,47 +1,59 @@
-import nltk 
 import re
-
-# Functions for cleaning up lines in files 
-def remove_stopwords(line):
-    words = line.split()
-    stopwords = nltk.corpus.stopwords.words('english')
-    new_words = [word for word in words if word not in stopwords]
-    return new_words 
-
-def remove_punc(line): 
-    new_words = re.sub(r'[^\w\s]', '', line)
-    return new_words
+import nltk 
 
 
-# Actual program
-file_list = ['sample3.txt']
-inverted_index = {}
+files = ['sample1.txt', 'sample2.txt', 'sample3.txt']
 
 
-# Prints a list of lists 
-for file in file_list:
-    words = []
-    open_file = open(file, 'r', encoding='utf8')
-    
-    for line in open_file:
-        clean_line = remove_stopwords(remove_punc(line.lower()))
-        words.append(clean_line)
+class File_processor: 
+    def __init__(self):
+        self.fileIDs = {}
 
-    print(words)
+
+    def open(self, file, id): 
+        """
+        IDs each file and returns file in string format so we can manipulate it 
+        """
+
+
+        self.fileIDs[file] = []
+        self.fileIDs[file].append(id)
+        open_file = open(file, 'r', encoding='utf8')
+        string_repr = ""
+
+
+        for line in open_file:
+            string_repr += line 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+        return string_repr 
 
     
+    def clean_text(self, text):
+        removed_punc = re.sub(r'[^\w\s]', '', text)
+        words = (removed_punc.lower()).split()
 
+
+        stopwords = nltk.corpus.stopwords.words('english')
+        cleaned_text = [word for word in words if word not in stopwords]
+
+
+
+        return cleaned_text
+
+
+
+file_processor = File_processor()
+file_ids = 0
+for file in files:
+    print('******************************************************************')
+    file_ids += 1 
+    opened = file_processor.open(file, file_ids)
+    clean_file = file_processor.clean_text(opened)
+    print(clean_file)
+
+print(file_processor.fileIDs)
+
+    
+    
