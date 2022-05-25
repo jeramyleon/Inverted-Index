@@ -7,15 +7,16 @@ class File_processor:
     Class to open, clean and add files so we can easily add them to a inverted index 
     """
     def __init__(self):
-        self.fileIDs = {}
-
+        self.texts = {}
+        self.filenames = {}
+        
 
     def open(self, file): 
         """
-        IDs each file and returns file in string format so we can manipulate it 
+        texts each file and returns file in string format so we can manipulate it 
         """       
-        self.fileIDs[file] = []
-        self.fileIDs[file].append(len(self.fileIDs))
+        self.filenames[len(self.filenames) + 1] = file  
+
         open_file = open(file, 'r', encoding='utf8')
         string_repr = ""
 
@@ -27,30 +28,35 @@ class File_processor:
     
     def clean_text(self, text):
         """
-        Removes punctuation and stopwords
+        Removes punctuation and stopwords and returns as a split up list 
         """
         removed_punc = re.sub(r'[^\w\s]', '', text)
         words = (removed_punc.lower()).split()
 
         stopwords = nltk.corpus.stopwords.words('english')
         cleaned_text = [word for word in words if word not in stopwords]
-
         return cleaned_text
     
 
-    def add_text(self, file, text):
+    def add_text(self, text):
         """
         Update file keys with text
         """
-        self.fileIDs[file].append(text)
+        self.texts[len(self.texts)+1] = text
         return None 
 
+
 class Inverted_index:
+    """
+    Data structure to hold words and the docIds they are in and how many times they appear 
+    """
     def __init__(self):
         self.index = {}
     
-    def update_index(self, word, docId_frequency):
+    def add_word(self, word):
         self.index[word] = []
-        self.index[word].append(docId_frequency)
     
+
+
+
     
