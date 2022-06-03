@@ -1,5 +1,6 @@
 from classes import File_processor, Inverted_index
 
+# Processing the files
 files = ['sample1.txt', 'sample2.txt', 'sample3.txt']
 file_processor = File_processor()
 
@@ -8,72 +9,55 @@ for file in files:
     cleaned_text = file_processor.clean_text(opened)
     file_processor.add_text(cleaned_text)
 
-id_texts = file_processor.texts # key, id number: value, filename  
-id_filenames = file_processor.filenames # key, id number: value, cleaned_text 
+id_texts = file_processor.texts # id number: list of words from text    
+id_filenames = file_processor.filenames # id number: filenames 
 
 
-inverted_index = Inverted_index()
+
+# Adding words to our inverted index and the documents they appear in 
+index = Inverted_index()
 
 for key, value in id_texts.items():
     for word in value: 
-        inverted_index.add_word(word)
-
-index_items = inverted_index.index
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-index = Inverted_index()
-for key, value in data.items(): # add words in texts to inverted index 
-    for word in value[1]:
         index.add_word(word)
 
-data2 = index.index # all the words in the text as keys with empty arrays so we can make our inverted index 
+display_index = index.index # displays words and the documents they appear in 
 
-# print(data2)
+for word in display_index:
+    for text in id_texts:
+        if word in id_texts[text]: 
+            display_index[word].append(text)
 
 
-# define string
-string = "Python is awesome, isn't it?"
-substring = "is"
 
-count = string.count(substring)
 
-# print count
-print("The count is:", count)
-"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

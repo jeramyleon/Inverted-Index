@@ -13,7 +13,7 @@ class File_processor:
 
     def open(self, file): 
         """
-        texts each file and returns file in string format so we can manipulate it 
+        opens each file and returns file in string format so we can manipulate it 
         """       
         self.filenames[len(self.filenames) + 1] = file  
 
