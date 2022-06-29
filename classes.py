@@ -28,7 +28,7 @@ class File_processor:
     
     def clean_text(self, text):
         """
-        Removes punctuation and stopwords and returns as a split up list 
+        Removes punctuation and stopwords and returns as a list 
         """
         removed_punc = re.sub(r'[^\w\s]', '', text)
         words = (removed_punc.lower()).split()
@@ -40,15 +40,15 @@ class File_processor:
 
     def add_text(self, text):
         """
-        Update file keys with text
+        Add's file keys with text
         """
-        self.texts[len(self.texts)+1] = text
+        self.texts[len(self.texts) + 1] = text
         return None 
 
 
 class Inverted_index:
     """
-    Data structure to hold words and the docIds they are in and how many times they appear 
+    Data structure to hold words and the docIds they appear in 
     """
     def __init__(self):
         self.index = {}
