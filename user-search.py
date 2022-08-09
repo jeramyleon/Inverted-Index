@@ -1,19 +1,22 @@
+from program import display_index, id_filenames
 import dearpygui.dearpygui as dpg 
 
+"""
+display_index shows each word and the documents they appear in 
+id_filenames shows the id numbers that point to the files 
+"""
+
 dpg.create_context()
-dpg.create_viewport(title='Joogle', width=600, height=300)
 
-def button_callback(): 
-    dpg.add_text('Term appears in files...')
+with dpg.window(label="Example Window"):
+    dpg.add_text("Hello, World")
+    dpg.add_button(label="Save")
+    dpg.add_input_text(label="String", default_value="Quick brown fox")
+    dpg.add_slider_float(label="float", default_value=0.273, max_value=1)
 
-with dpg.window(tag="Primary Window"):
-    dpg.add_input_text(default_value='enter text')
-    dpg.add_button(label='search', callback=button_callback)
+dpg.create_viewport(title="Custom Title", )
 
-    
-dpg.setup_dearpygui()
-dpg.show_viewport()
-dpg.set_primary_window("Primary Window", True)
-dpg.start_dearpygui()
-dpg.destroy_context()
+
+
+
 

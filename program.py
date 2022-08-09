@@ -12,7 +12,6 @@ for file in files:
 id_texts = file_processor.texts # id number: list of words from text    
 id_filenames = file_processor.filenames # id number: filenames 
 
-
 # Adding words to our inverted index and the documents they appear in 
 index = Inverted_index()
 
@@ -27,7 +26,6 @@ for word in display_index:
         if word in id_texts[text]: 
             display_index[word].append(text)
 
-print(display_index)
 
 
 
