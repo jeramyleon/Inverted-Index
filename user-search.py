@@ -1,11 +1,6 @@
 from program import display_index, id_filenames
 import dearpygui.dearpygui as dpg 
 
-"""
-display_index shows each word and the id for the documents they appear in 
-id_filenames shows the id numbers that point to the files 
-"""
-
 dpg.create_context()
 
 def search_word(): 
@@ -20,7 +15,7 @@ def search_word():
             dpg.add_text("word not found in any documents")
 
 with dpg.window(tag="Inverted Index Search"):
-    input_text = dpg.add_input_text(default_value="Lebron James")
+    input_text = dpg.add_input_text(default_value="word to search...")
     search = dpg.add_button(label="search")
 
     dpg.set_item_callback(search, search_word)
@@ -32,9 +27,6 @@ dpg.set_primary_window("Inverted Index Search", True)
 dpg.start_dearpygui()
 dpg.destroy_context()
 
-# user enters search term or terms 
-# program takes the search input
-# if input is in display index, link doc numbers to id_filenames and print the names 
 
 
 
