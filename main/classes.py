@@ -1,7 +1,6 @@
 import re
 import nltk 
 
-
 class File_processor: 
     """
     Class to open, clean and add files so we can easily add them to a inverted index 
@@ -9,11 +8,12 @@ class File_processor:
     def __init__(self):
         self.texts = {}
         self.filenames = {}
-        
+     
 
     def open(self, file): 
         """
-        opens each file and returns file in string format so we can manipulate it 
+        opens a file and returns it in string format
+        tags the string representation of said file with a number so we can identify and access it 
         """       
         self.filenames[len(self.filenames) + 1] = file  
 
@@ -23,6 +23,7 @@ class File_processor:
         for line in open_file:
             string_repr += line 
 
+        open_file.close()
         return string_repr 
 
     
@@ -40,7 +41,7 @@ class File_processor:
 
     def add_text(self, text):
         """
-        Add's file keys with text
+        Adds file keys with text
         """
         self.texts[len(self.texts) + 1] = text
         return None 

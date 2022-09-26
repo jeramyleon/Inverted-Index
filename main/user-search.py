@@ -1,4 +1,4 @@
-from program import display_index, id_filenames
+from inverted_index import display_index, id_filenames
 import dearpygui.dearpygui as dpg 
 
 dpg.create_context()

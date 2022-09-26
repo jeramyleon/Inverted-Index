@@ -1,7 +1,9 @@
 from classes import File_processor, Inverted_index
+from pathlib import Path  
 
 # Processing the files
-files = ['sample1.txt', 'sample2.txt', 'sample3.txt']
+directory = r'C:\Users\jeram\Desktop\software-career\projects\inverted-index\text-files'
+files = Path(directory).glob('*.txt')
 file_processor = File_processor()
 
 for file in files:
