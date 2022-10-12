@@ -1,18 +1,28 @@
 import unittest 
+import re
+import nltk 
+import string 
+
 from main.classes import File_processor
 
 
 class TestFileProcessor(unittest.TestCase):
 
-    def testOpen(self):
+    def test_0_open(self):
         file_processor = File_processor()
         open_file = file_processor.open('text_files/sample1.txt')
         self.assertIsInstance(open_file, str)
         
-    def testCleanText(self):
-        pass
-    
-    def testAddText(self):
+    def test_1_cleanText(self):
+        file_processor = File_processor()
+        string_example = "my name is jeramy leon and i am 22 years old"
+        cleaned_text = file_processor.clean_text(string_example)
+
+        for character in string_example: 
+            self.assertNotIn(character, string.punctuation)
+
+
+    def test_2_addText(self):
         pass 
 
 if __name__ == '__main__':

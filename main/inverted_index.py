@@ -6,6 +6,7 @@ directory = r'C:\Users\jeram\Desktop\software-career\projects\inverted-index\tex
 files = Path(directory).glob('*.txt')
 file_processor = File_processor()
 
+# opening files, removing punctuation and stopwords and adding them to a database 
 for file in files:
     opened = file_processor.open(file)
     cleaned_text = file_processor.clean_text(opened)
