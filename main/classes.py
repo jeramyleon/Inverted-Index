@@ -46,7 +46,6 @@ class File_processor:
         self.texts[len(self.texts) + 1] = text
         return None 
 
-
 class Inverted_index:
     """
     Data structure to hold words and the docIds they appear in 

@@ -1,10 +1,9 @@
 import unittest 
 import re
 import nltk 
-import string 
-
+import string
+ 
 from main.classes import File_processor
-
 
 class TestFileProcessor(unittest.TestCase):
 
@@ -23,7 +22,15 @@ class TestFileProcessor(unittest.TestCase):
 
 
     def test_2_addText(self):
-        pass 
+        file_processor = File_processor()
+        texts = ["jeramy", "leon", "23"]
+        text_amount = 0
+
+        for text in texts: 
+            file_processor.add_text(text)
+            text_amount += 1 
+            self.assertEqual(len(file_processor.texts), text_amount)
+
 
 if __name__ == '__main__':
     unittest.main()
